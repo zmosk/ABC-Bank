@@ -9,12 +9,12 @@ namespace abc_bank
     public class Customer
     {
         private String name;
-        private List<Account> accounts;
+        private List<IAccount> accounts;
 
         public Customer(String name)
         {
             this.name = name;
-            this.accounts = new List<Account>();
+            this.accounts = new List<IAccount>();
         }
 
         public String GetName()
@@ -22,7 +22,7 @@ namespace abc_bank
             return name;
         }
 
-        public Customer OpenAccount(Account account)
+        public Customer OpenAccount(IAccount account)
         {
             accounts.Add(account);
             return this;
@@ -36,7 +36,7 @@ namespace abc_bank
         public double TotalInterestEarned() 
         {
             double total = 0;
-            foreach (Account a in accounts)
+            foreach (IAccount a in accounts)
                 total += a.InterestEarned();
             return total;
         }
@@ -46,7 +46,7 @@ namespace abc_bank
             String statement = null;
             statement = "Statement for " + name + "\n";
             double total = 0.0;
-            foreach (Account a in accounts) 
+            foreach (IAccount a in accounts) 
             {
                 statement += "\n" + statementForAccount(a) + "\n";
                 total += a.sumTransactions();
@@ -55,19 +55,19 @@ namespace abc_bank
             return statement;
         }
 
-        private String statementForAccount(Account a) 
+        private String statementForAccount(IAccount a) 
         {
             String s = "";
 
            //Translate to pretty account type
             switch(a.GetAccountType()){
-                case Account.CHECKING:
+                case IAccount.CHECKING:
                     s += "Checking Account\n";
                     break;
-                case Account.SAVINGS:
+                case IAccount.SAVINGS:
                     s += "Savings Account\n";
                     break;
-                case Account.MAXI_SAVINGS:
+                case IAccount.MAXI_SAVINGS:
                     s += "Maxi Savings Account\n";
                     break;
             }
