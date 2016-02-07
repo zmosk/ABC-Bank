@@ -38,11 +38,6 @@ namespace abc_bank.Accounts
 
         public double sumTransactions()
         {
-            return CheckIfTransactionsExist(true);
-        }
-
-        private double CheckIfTransactionsExist(bool checkAll)
-        {
             double amount = 0.0;
             foreach (Transaction t in transactions)
                 amount += t.amount;
