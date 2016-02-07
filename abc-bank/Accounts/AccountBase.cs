@@ -11,6 +11,7 @@ namespace abc_bank.Accounts
         public List<Transaction> transactions;
 
         public abstract double InterestEarned();
+        public abstract string GetAccountType();
 
         public void Deposit(double amount)
         {
@@ -36,7 +37,7 @@ namespace abc_bank.Accounts
             }
         }
 
-        public double sumTransactions()
+        public double SumTransactions()
         {
             double amount = 0.0;
             foreach (Transaction t in transactions)

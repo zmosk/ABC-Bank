@@ -11,6 +11,7 @@ namespace abc_bank
         void Deposit(double amount);
         void Withdraw(double amount);
         double InterestEarned();
-        double sumTransactions();
+        double SumTransactions();
+        string GetAccountType();
     }
 }

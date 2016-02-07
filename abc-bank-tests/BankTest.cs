@@ -15,7 +15,7 @@ namespace abc_bank_tests
         {
             Bank bank = new Bank();
             Customer john = new Customer("John");
-            john.OpenAccount(new MaxiSavingsAccount(MaxiSavingsAccount.CHECKING));
+            john.OpenAccount(new MaxiSavingsAccount());
             bank.AddCustomer(john);
 
             Assert.AreEqual("Customer Summary\n - John (1 account)", bank.CustomerSummary());
@@ -24,7 +24,7 @@ namespace abc_bank_tests
         [TestMethod]
         public void CheckingAccount() {
             Bank bank = new Bank();
-            MaxiSavingsAccount checkingAccount = new MaxiSavingsAccount(MaxiSavingsAccount.CHECKING);
+            CheckingAccount checkingAccount = new CheckingAccount();
             Customer bill = new Customer("Bill").OpenAccount(checkingAccount);
             bank.AddCustomer(bill);
 
@@ -36,10 +36,10 @@ namespace abc_bank_tests
         [TestMethod]
         public void Savings_account() {
             Bank bank = new Bank();
-            MaxiSavingsAccount checkingAccount = new MaxiSavingsAccount(MaxiSavingsAccount.SAVINGS);
-            bank.AddCustomer(new Customer("Bill").OpenAccount(checkingAccount));
+            SavingsAccount savingsAccount = new SavingsAccount();
+            bank.AddCustomer(new Customer("Bill").OpenAccount(savingsAccount));
 
-            checkingAccount.Deposit(1500.0);
+            savingsAccount.Deposit(1500.0);
 
             Assert.AreEqual(2.0, bank.totalInterestPaid(), DOUBLE_DELTA);
         }
@@ -47,10 +47,10 @@ namespace abc_bank_tests
         [TestMethod]
         public void Maxi_savings_account() {
             Bank bank = new Bank();
-            MaxiSavingsAccount checkingAccount = new MaxiSavingsAccount(MaxiSavingsAccount.MAXI_SAVINGS);
-            bank.AddCustomer(new Customer("Bill").OpenAccount(checkingAccount));
+            MaxiSavingsAccount maxiSavingsAccount = new MaxiSavingsAccount();
+            bank.AddCustomer(new Customer("Bill").OpenAccount(maxiSavingsAccount));
 
-            checkingAccount.Deposit(3000.0);
+            maxiSavingsAccount.Deposit(3000.0);
 
             Assert.AreEqual(170.0, bank.totalInterestPaid(), DOUBLE_DELTA);
         }
