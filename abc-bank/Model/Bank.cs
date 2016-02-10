@@ -1,10 +1,11 @@
-﻿using System;
+﻿using abc_bank.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace abc_bank
+namespace abc_bank.Model
 {
     public class Bank
     {
@@ -21,21 +22,19 @@ namespace abc_bank
         }
 
         public String CustomerSummary() {
-            String summary = "Customer Summary";
+            StringBuilder summary = new StringBuilder();
+
+            summary.Append("Customer Summary");
+
             foreach (Customer c in customers)
-                summary += "\n - " + c.GetName() + " (" + format(c.GetNumberOfAccounts(), "account") + ")";
-            return summary;
+                summary.Append(string.Format("{0} - {1} ({2})", Environment.NewLine, c.GetName(), Utilities.PluralFormatter(c.GetNumberOfAccounts(), "account")));
+            
+            return summary.ToString();
         }
 
-        //Make sure correct plural of word is created based on the number passed in:
-        //If number passed in is 1 just return the word otherwise add an 's' at the end
-        private String format(int number, String word)
+        public decimal totalInterestPaid()
         {
-            return number + " " + (number == 1 ? word : word + "s");
-        }
-
-        public double totalInterestPaid() {
-            double total = 0;
+            decimal total = 0m;
             foreach(Customer c in customers)
                 total += c.TotalInterestEarned();
             return total;
