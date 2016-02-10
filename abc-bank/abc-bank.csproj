@@ -42,7 +42,7 @@
     <Compile Include="BusinessComponents\InterestStrategies\IInterestStrategy.cs" />
     <Compile Include="BusinessComponents\InterestStrategies\Impl\CheckingAccountInterestStrategy.cs" />
     <Compile Include="BusinessComponents\InterestStrategies\Impl\MaxiSavingsAccountInterestStrategy.cs" />
-    <Compile Include="BusinessComponents\InterestStrategies\Impl\MaxiSavingsAccountPremiumInterestStrategy.cs" />
+    <Compile Include="BusinessComponents\InterestStrategies\Impl\MaxiSavingsAccountFivePercentInterestStrategy.cs" />
     <Compile Include="BusinessComponents\InterestStrategies\Impl\SavingsAccountInterestStrategy.cs" />
     <Compile Include="Model\Accounts\Impl\AccountBase.cs" />
     <Compile Include="Model\Accounts\Impl\SavingsAccount.cs" />

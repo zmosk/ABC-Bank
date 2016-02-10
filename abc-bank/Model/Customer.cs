@@ -39,7 +39,7 @@ namespace abc_bank.Model
 
         public decimal TotalInterestEarned() 
         {
-            decimal total = 0m;
+            decimal total = 0;
             foreach (IAccount a in accounts)
                 total += a.InterestEarned();
             return total;

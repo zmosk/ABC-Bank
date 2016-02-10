@@ -59,37 +59,37 @@ namespace abc_bank_tests
         }
 
         [TestMethod]
-        public void MaxiSavingsAccountTest_InterestEarned_Premium_Rates_Less_Than_A_Thousand()
+        public void MaxiSavingsAccountTest_InterestEarned_FivePercent_Rates_Less_Than_A_Thousand()
         {
-            IAccount maxiSavingsAccount = new MaxiSavingsAccount(new MaxiSavingsAccountPremiumInterestStrategy());
+            IAccount maxiSavingsAccount = new MaxiSavingsAccount(new MaxiSavingsAccountFivePercentInterestStrategy());
 
             maxiSavingsAccount.Deposit(250.75m);
             maxiSavingsAccount.Deposit(120.25m);
 
-            Assert.AreEqual(185.50m, maxiSavingsAccount.InterestEarned());
+            Assert.AreEqual(18.55m, maxiSavingsAccount.InterestEarned());
         }
 
         [TestMethod]
-        public void MaxiSavingsAccountTest_InterestEarned_Premium_Rates_More_Than_A_Thousand()
+        public void MaxiSavingsAccountTest_InterestEarned_FivePercent_Rates_More_Than_A_Thousand()
         {
-            IAccount maxiSavingsAccount = new MaxiSavingsAccount(new MaxiSavingsAccountPremiumInterestStrategy());
+            IAccount maxiSavingsAccount = new MaxiSavingsAccount(new MaxiSavingsAccountFivePercentInterestStrategy());
 
             maxiSavingsAccount.Deposit(250.75m);
             maxiSavingsAccount.Deposit(120.25m);
 
-            Assert.AreEqual(185.50m, maxiSavingsAccount.InterestEarned());
+            Assert.AreEqual(18.55m, maxiSavingsAccount.InterestEarned());
         }
 
         [TestMethod]
-        public void MaxiSavingsAccountTest_InterestEarned_Premium_Rates_More_Than_A_Thousand_With_Withdrawals()
+        public void MaxiSavingsAccountTest_InterestEarned_FivePercent_Rates_More_Than_A_Thousand_With_Withdrawals()
         {
-            IAccount maxiSavingsAccount = new MaxiSavingsAccount(new MaxiSavingsAccountPremiumInterestStrategy());
+            IAccount maxiSavingsAccount = new MaxiSavingsAccount(new MaxiSavingsAccountFivePercentInterestStrategy());
 
             maxiSavingsAccount.Deposit(250.75m);
             maxiSavingsAccount.Deposit(120.25m);
             maxiSavingsAccount.Withdraw(1);
 
-            Assert.AreEqual(37, maxiSavingsAccount.InterestEarned());
+            Assert.AreEqual(.37m, maxiSavingsAccount.InterestEarned());
         }
     }
 }

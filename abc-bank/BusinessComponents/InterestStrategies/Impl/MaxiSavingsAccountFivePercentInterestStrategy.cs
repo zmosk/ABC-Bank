@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace abc_bank.BusinessComponents.InterestStrategies.Impl
 {
-    public class MaxiSavingsAccountPremiumInterestStrategy : IInterestStrategy
+    public class MaxiSavingsAccountFivePercentInterestStrategy : IInterestStrategy
     {
         public decimal CalculateInterest(IAccount account)
         {
@@ -22,9 +22,9 @@ namespace abc_bank.BusinessComponents.InterestStrategies.Impl
                     && t.transactionDate >= tenDaysPrior);
 
             if (hasWithdrawalsInTenDaysPrior)
-                return amount * 0.1m;
+                return amount * 0.001m;
 
-            return amount * 0.5m;            
+            return amount * 0.05m;            
         }
     }
 }

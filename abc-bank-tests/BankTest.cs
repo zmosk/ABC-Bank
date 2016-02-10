@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using abc_bank;
 using abc_bank.Accounts.Impl;
 using abc_bank.Model;
+using abc_bank.BusinessComponents.InterestStrategies.Impl;
 
 namespace abc_bank_tests
 {
@@ -56,8 +57,11 @@ namespace abc_bank_tests
             bank.AddCustomer(new Customer("Bill").OpenAccount(maxiSavingsAccount));
 
             maxiSavingsAccount.Deposit(3000.0m);
+            Assert.AreEqual(170, bank.totalInterestPaid());
 
-            Assert.AreEqual(170.0m, bank.totalInterestPaid());
+            // change the interest strategy
+            maxiSavingsAccount.SetInterestStrategy(new MaxiSavingsAccountFivePercentInterestStrategy());
+            Assert.AreEqual(150, bank.totalInterestPaid());
         }
     }
 }

@@ -34,7 +34,7 @@ namespace abc_bank.Model
 
         public decimal totalInterestPaid()
         {
-            decimal total = 0m;
+            decimal total = 0;
             foreach(Customer c in customers)
                 total += c.TotalInterestEarned();
             return total;
